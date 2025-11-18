@@ -7,6 +7,8 @@ on:
 jobs:
   scan:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     # Skip if PR is draft or has skip-copilot label
     if: |
       github.event.pull_request.draft == false &&
