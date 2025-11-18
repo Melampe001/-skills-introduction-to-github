@@ -1,0 +1,3 @@
+- name: skip-copilot
+  color: "d73a4a"
+  description: "Skip Copilot scanning on this pull request"

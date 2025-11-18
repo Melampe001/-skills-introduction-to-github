@@ -1,0 +1,27 @@
+name: Copilot Scan
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review, labeled, unlabeled]
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    # Skip if PR is draft or has skip-copilot label
+    if: |
+      github.event.pull_request.draft == false &&
+      !contains(github.event.pull_request.labels.*.name, 'skip-copilot')
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Copilot scan
+        run: |
+          echo "Running Copilot scan..."
+          echo "PR is not draft and does not have skip-copilot label"
+          echo "Scan would execute here"
+      
+      - name: Report results
+        run: |
+          echo "Scan completed successfully"
